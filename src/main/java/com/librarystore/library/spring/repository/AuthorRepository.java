@@ -9,8 +9,7 @@ import java.util.List;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
     /**
-     * Hibernate request will be built based on the method name
      * @param fio name sent from client
      */
-    List<Author> findByContainingIgnoreCaseOrderByFio(String fio);
+    List<Author> findByFioContainingIgnoreCaseOrderByFio(String fio);
 }
