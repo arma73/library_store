@@ -1,0 +1,33 @@
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+
+spring:
+  datasource:
+    default-catalog: library
+    jndi-name: java:/Library
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+      show-sql: true
+
+logging:
+  pattern: "%d{HH:mm:ss} %-5p [%c] - %m%n"
+  file:
+    name: /temp/app.log
+
+  level:
+    ROOT: error
+    org.springframework: warn
+    javax.faces: warn
+    org.omnifaces: warn
+    org.springframework.security: warn
+    org.hibernate: warn
+    org.hibernate.type.descriptor.sql: warn

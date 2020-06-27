@@ -1,0 +1,61 @@
+buildscript {
+    ext {
+        springBootVersion = '2.3.1.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'com.librarystore'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repository.primefaces.org'
+    }
+}
+
+ext['hibernate.version'] = '5.4.18.Final'
+
+configurations {
+    providedRuntime
+
+    compile.exclude module: 'spring-boot-starter-tomcat' // wildFly
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.3.1.RELEASE'
+
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+    compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
+    providedCompile group: 'javax', name: 'javaee-api', version: '8.0.1'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
