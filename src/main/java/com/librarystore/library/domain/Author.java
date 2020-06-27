@@ -1,5 +1,6 @@
 package com.librarystore.library.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
@@ -19,10 +20,11 @@ import java.util.List;
 
 @Entity
 @Table(catalog = "library")
-@Getter @Setter
 @DynamicUpdate
 @DynamicInsert
 @SelectBeforeUpdate
+@EqualsAndHashCode(of = "id")
+@Getter @Setter
 public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

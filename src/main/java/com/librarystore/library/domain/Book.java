@@ -11,17 +11,17 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "book", catalog = "library")
+@Table(catalog = "library")
 @DynamicUpdate
 @DynamicInsert
 @SelectBeforeUpdate
-@Setter @Getter
 @EqualsAndHashCode(of = "id")
+@Setter @Getter
 public class Book {
     public Book() {
     }
 
-    public Book(Long id, byte[] imageByte) {
+    public Book(Long id, byte[] image) {
 
     }
 }
