@@ -45,6 +45,10 @@ public class Book {
     @JoinColumn
     private Genre genre;
 
+    @ManyToOne
+    @JoinColumn
+    private Publisher publisher;
+
     @Column(name = "publish_year")
     private Integer publishYear;
 
