@@ -29,5 +29,5 @@ logging:
     javax.faces: warn
     org.omnifaces: warn
     org.springframework.security: warn
-    org.hibernate: warn
-    org.hibernate.type.descriptor.sql: warn
+    org.hibernate: trace
+    org.hibernate.type.descriptor.sql: trace
