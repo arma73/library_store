@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Lob;
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 import javax.persistence.GenerationType;
 
@@ -38,6 +40,10 @@ public class Book {
     private Integer pageCount;
 
     private String isbn;
+
+    @ManyToOne
+    @JoinColumn
+    private Genre genre;
 
     @Column(name = "publish_year")
     private Integer publishYear;
