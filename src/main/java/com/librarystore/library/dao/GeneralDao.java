@@ -14,4 +14,6 @@ public interface GeneralDao<E> {
     E get(long id);
     E save(E entity);
     void delete(E entity);
+
+    List<E> search(String ... searchString);
 }
