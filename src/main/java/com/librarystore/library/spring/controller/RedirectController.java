@@ -8,25 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import lombok.extern.java.Log;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
 @Log
 public class RedirectController {
-    private AuthorRepository authorRepository;
-
     @GetMapping
-    public String baseUrlRedirect() {
-        List<Author> authorList = getAuthorRepository().findAll();
-        return "index";
-    }
-
-    public AuthorRepository getAuthorRepository() {
-        return authorRepository;
-    }
-
-    @Autowired
-    public void setAuthorRepository(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    public String baseUrlRedirect(HttpServletRequest request, HttpServletResponse response) {
+        return "redirect:" + request.getRequestURL().append("index.xhtml").toString();
     }
 }
