@@ -37,4 +37,20 @@ public interface BookDao extends GeneralDao<Book> {
      * @param genreId primary key for genre.
      */
     Page<Book> findByGenre(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection, long genreId);
+
+    /**
+     * Book view statistics update.
+     * @param viewCount number of new views.
+     * @param id of the book that should update.
+     */
+    void updateViewCount(long viewCount, long id);
+
+    /**
+     * Update Rating data.
+     * @param totalRating final rating of all calculations.
+     * @param totalVoteCount how many times voted for the book.
+     * @param avgRating average rating.
+     * @param id book.
+     */
+    void updateRating(long totalRating, long totalVoteCount, int avgRating, long id);
 }
