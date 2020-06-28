@@ -34,22 +34,32 @@ repositories {
 ext['hibernate.version'] = '5.4.18.Final'
 
 configurations {
-    providedRuntime
-
-    compile.exclude module: 'spring-boot-starter-tomcat' // wildFly
+    compile.exclude module: 'spring-boot-starter-tomcat'
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.3.1.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    implementation group: 'org.springframework.boot', name:'spring-boot-starter-security'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
     compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+    annotationProcessor group: 'org.projectlombok', name:'lombok', version:'1.18.6'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
     providedCompile group: 'javax', name: 'javaee-api', version: '8.0.1'
+
+    // front end
+    implementation group: 'org.primefaces', name: 'primefaces', version: '6.0'
+    implementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    implementation group: 'org.omnifaces', name: 'omnifaces', version: '2.5.1'
+    implementation group: 'net.bootsfaces', name: 'bootsfaces', version:'1.0.0'
+
+    implementation group: 'commons-io', name: 'commons-io', version: '2.7'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+
+    implementation group: 'org.primefaces.themes', name: 'bootstrap', version: '1.0.10'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
