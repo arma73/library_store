@@ -19,13 +19,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     /**
      * Search for books by title or author.
      * @param name book.
-     * @param fio author book
+     * @param fio author book.
      */
     List<Book> findByNameContainingIgnoreCaseOrAuthorFioContainingIgnoreCaseOrderByName(String name, String fio);
 
     /**
-     * Get the list of books page by page
-     * @param pageable parameters for page. Implement with {@link org.springframework.data.domain.PageRequest}
+     * Get the list of books page by page.
+     * @param pageable parameters for page. Implement with {@link org.springframework.data.domain.PageRequest}.
      */
     @Query(value = "select new com.librarystore.library.domain.Book(" +
             "b.id, b.name, b.pageCount, b.isbn, b.genre, b.author, b.publisher, " +
@@ -38,4 +38,12 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(value = "select new com.librarystore.library.domain.Book(b.id, b.image) from Book b")
     List<Book> findTopBooks(Pageable pageable);
+
+    @Query(value = "select new com.librarystore.library.domain.Book(b.id, b.name, b.pageCount, b.isbn, " +
+            "b.genre, b.author, b.publisher, b.publishYear, b.image, b.descr, b.viewCount, " +
+            "b.totalRating, b.totalVoteCount, b.avgRating) from Book b where b.genre.id=:genreId")
+    Page<Book> findByGenre(@Param("genreId") long genreId, Pageable pageable);
+
+    @Query(value = "select b.content FROM Book b where b.id = :id")
+    byte[] getContent(@Param("id") long id);
 }
