@@ -7,7 +7,7 @@
         <resource-handler>org.omnifaces.resourcehandler.UnmappedResourceHandler</resource-handler>
 
         <locale-config>
-            <default-locale>am</default-locale>
+            <default-locale>arm</default-locale>
         </locale-config>
 
         <resource-bundle>
